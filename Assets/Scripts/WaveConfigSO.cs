@@ -6,7 +6,18 @@ using UnityEngine;
 public class WaveConfigSO : ScriptableObject
 {
     [SerializeField] Transform pathPrefab;
+    [SerializeField] List<GameObject> enemyPrefabs;
     [SerializeField] float speed;
+
+    public int GetEnemyCount()
+    {
+        return enemyPrefabs.Count;
+    }
+
+    public GameObject GetEnemyPrefab(int index)
+    {
+        return enemyPrefabs[index];
+    }
 
     public float GetSpeed()
     {
