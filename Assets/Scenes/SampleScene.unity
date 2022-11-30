@@ -159,6 +159,7 @@ MonoBehaviour:
   spawnInterval: 1
   spawnTimeVariance: 0.2
   minSpawnTime: 0.2
+  isLooping: 1
 --- !u!4 &162904213
 Transform:
   m_ObjectHideFlags: 0
@@ -258,58 +259,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1938743149 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4319593990833395095, guid: e199be062dafd7844945d121b865b394, type: 3}
-  m_PrefabInstance: {fileID: 3463264279045258492}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1938743150
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1938743149}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7990c57b39d2edc4f895442c9231a9ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 10
-  paddingTop: 5
-  paddingBottom: 2
-  paddingLeft: 0.5
-  paddingRight: 0.5
---- !u!114 &1938743151
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1938743149}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 908268e4da180954a9a480f04c07a709, type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: Player
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!1 &1983565676
 GameObject:
   m_ObjectHideFlags: 0
@@ -433,6 +382,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8517847672144646884, guid: e199be062dafd7844945d121b865b394, type: 3}
+      propertyPath: projectileTimeGap
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 1415795304392346218, guid: e199be062dafd7844945d121b865b394, type: 3}
       propertyPath: m_RootOrder
       value: 1

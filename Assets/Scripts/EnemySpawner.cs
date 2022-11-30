@@ -11,11 +11,14 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] float spawnTimeVariance = 0.2f;
     [SerializeField] float minSpawnTime = 0.2f;
     WaveConfigSO currentWave;
-    bool isLooping;
+    [SerializeField] bool isLooping;
+    IEnumerator spawnEnemiesCoroutine;
     void Start()
     {
+        spawnEnemiesCoroutine = SpawnEnemies();
+        StartCoroutine(spawnEnemiesCoroutine);
 
-        StartCoroutine(SpawnEnemies());
+        //StartCoroutine(SpawnEnemies());
     }
 
     public WaveConfigSO GetCurrentWave()
@@ -49,7 +52,7 @@ public class EnemySpawner : MonoBehaviour
     public float GetSpawnTime()
     {
         float spawnTime = Random.Range(spawnInterval - spawnTimeVariance, spawnInterval + spawnTimeVariance);
-        Debug.Log(spawnTime);
+        //Debug.Log(spawnTime);
 
         return Mathf.Clamp(spawnTime, minSpawnTime, float.MaxValue);
     }

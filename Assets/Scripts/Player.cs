@@ -10,10 +10,17 @@ public class Player : MonoBehaviour
     [SerializeField] float paddingLeft;
     [SerializeField] float paddingRight;
 
+    Shooter shooter;
+
     Vector2 rawData;
     Vector2 minBounds;
     Vector2 maxBounds;
 
+
+    private void Awake()
+    {
+        shooter = GetComponent<Shooter>();
+    }
 
     private void Start()
     {
@@ -50,6 +57,14 @@ public class Player : MonoBehaviour
     {
         rawData = action.Get<Vector2>();
 
+
+    }
+
+    void OnFire(InputValue fire)
+    {
+        shooter.isFiring = fire.isPressed;
+        // return false if not pressed?
+        //Debug.Log("fire is press " + fire.isPressed);
 
     }
 }
