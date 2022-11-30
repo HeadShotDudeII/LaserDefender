@@ -55,7 +55,7 @@ public class Shooter : MonoBehaviour
         while (true)
         {
             GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
-            Debug.Log("Bullet name is " + projectile.name);
+            //Debug.Log("Bullet name is " + projectile.name);
             Rigidbody2D projectile_rigidbody = projectile.GetComponent<Rigidbody2D>();
             projectile_rigidbody.velocity = transform.up * projectileSpeed;
             //projectile_rigidbody.velocity = new Vector2(0f, projectileSpeed);

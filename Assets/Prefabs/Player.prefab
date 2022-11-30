@@ -99,6 +99,7 @@ GameObject:
   - component: {fileID: -8517847672144646884}
   - component: {fileID: 1938743150}
   - component: {fileID: 1938743151}
+  - component: {fileID: 6126030016935493474}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -171,7 +172,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f11ba1285843c3e4b9d5fcaecfd4c99a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 20
+  health: 2000
+  hitEffect: {fileID: 5196708975088264236, guid: cda74063473a0474fa3ea84a40131134, type: 3}
 --- !u!114 &-8517847672144646884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,6 +190,9 @@ MonoBehaviour:
   projectileLifeTime: 10
   projectileSpeed: 10
   projectileTimeGap: 0.2
+  isAi: 0
+  projectileTimeGapVariance: 0.2
+  projectileMinTimeGap: 0.2
   isFiring: 0
 --- !u!114 &1938743150
 MonoBehaviour:
@@ -236,3 +241,16 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &6126030016935493474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4319593990833395095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bf0b6fd12449914c9db819ec42d0e59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageDealt: 25

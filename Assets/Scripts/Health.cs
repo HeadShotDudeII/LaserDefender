@@ -3,18 +3,18 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     [SerializeField] int health = 50;
-    int counter = 0;
+    [SerializeField] ParticleSystem hitEffect;
     // Start is called before the first frame update
     private void OnTriggerEnter2D(Collider2D collision)
     {
         DamageDealer damageDealer = collision.GetComponent<DamageDealer>();
         if (damageDealer != null)
         {
-            counter++;
+
             Debug.Log(damageDealer.name);
             damageDealer.Die();
             TakeDamage(damageDealer.GetDamage());
-            Debug.Log("counter is " + counter);
+            PlayHitEffect();
         }
     }
 
@@ -27,5 +27,14 @@ public class Health : MonoBehaviour
             Destroy(gameObject);
         }
 
+    }
+
+    void PlayHitEffect()
+    {
+        if (hitEffect != null)
+        {
+            ParticleSystem instance = Instantiate(hitEffect, transform.position, Quaternion.identity);
+            Destroy(instance, instance.main.duration + instance.main.startLifetime.constantMax);
+        }
     }
 }

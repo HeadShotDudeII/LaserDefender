@@ -12,6 +12,9 @@ public class DamageDealer : MonoBehaviour
 
     public void Die()
     {
-        Destroy(gameObject);
-    }
+        Debug.Log(" Who is Die " + gameObject.name);
+        if (gameObject.tag == "Bullets")
+            Destroy(gameObject);
+    }  // to be changed: if enemy have lots of health
+       // when it collides with player it doesnot have to die.
 }
