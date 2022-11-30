@@ -3,13 +3,29 @@ using UnityEngine;
 
 public class Shooter : MonoBehaviour
 {
+    [Header("General")]
     [SerializeField] GameObject projectilePrefab;
     [SerializeField] float projectileLifeTime = 10f;
     [SerializeField] float projectileSpeed = 10f;
     [SerializeField] float projectileTimeGap = 0.2f;
 
-    public bool isFiring;
+    [Header("Ai")]
+    [SerializeField] bool isAi;
+    [SerializeField] float projectileTimeGapVariance = 0.2f;
+    [SerializeField] float projectileMinTimeGap = 0.2f;
+
+
+
+    [HideInInspector] public bool isFiring;
     Coroutine firingCoroutine;
+
+    private void Start()
+    {
+        if (isAi)
+        {
+            isFiring = true;
+        }
+    }
 
     // Update is called once per frame
     void Update()
@@ -41,11 +57,14 @@ public class Shooter : MonoBehaviour
             GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
             Debug.Log("Bullet name is " + projectile.name);
             Rigidbody2D projectile_rigidbody = projectile.GetComponent<Rigidbody2D>();
-            //projectile_rigidbody.velocity = transform.up * projectileSpeed;
-            projectile_rigidbody.velocity = new Vector2(0f, projectileSpeed);
+            projectile_rigidbody.velocity = transform.up * projectileSpeed;
+            //projectile_rigidbody.velocity = new Vector2(0f, projectileSpeed);
             Destroy(projectile, projectileLifeTime);
 
-            yield return new WaitForSeconds(projectileTimeGap);
+            float fireTimeGap = Random.Range(projectileTimeGap - projectileTimeGapVariance, projectileTimeGap + projectileTimeGapVariance);
+
+
+            yield return new WaitForSeconds(Mathf.Clamp(fireTimeGap, projectileMinTimeGap, float.MaxValue));
         }
 
 
