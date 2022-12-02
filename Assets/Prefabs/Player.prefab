@@ -100,6 +100,7 @@ GameObject:
   - component: {fileID: 1938743150}
   - component: {fileID: 1938743151}
   - component: {fileID: 6126030016935493474}
+  - component: {fileID: 2401992506865580475}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -172,8 +173,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f11ba1285843c3e4b9d5fcaecfd4c99a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 1
+  score: 0
   health: 2000
   hitEffect: {fileID: 5196708975088264236, guid: cda74063473a0474fa3ea84a40131134, type: 3}
+  isPlayShakeEffect: 0
+  cameraShake: {fileID: 0}
 --- !u!114 &-8517847672144646884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -254,3 +259,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageDealt: 25
+--- !u!114 &2401992506865580475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4319593990833395095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c12420528552e5e4690610550b9e5d8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shakeMagnitude: 1
+  shakeDuration: 1

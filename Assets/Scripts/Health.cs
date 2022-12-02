@@ -2,9 +2,25 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
+    [SerializeField] bool isPlayer;
+    [SerializeField] int score = 50;
     [SerializeField] int health = 50;
     [SerializeField] ParticleSystem hitEffect;
+    [SerializeField] bool isPlayShakeEffect;
+    [SerializeField] CameraShake cameraShake;
+    AudioPlayer audioPlayer;
+    ScoreKeeper scoreKeeper;
     // Start is called before the first frame update
+    private void Awake()
+    {
+        audioPlayer = FindObjectOfType<AudioPlayer>();
+        cameraShake = Camera.main.GetComponent<CameraShake>();
+        scoreKeeper = FindObjectOfType<ScoreKeeper>();
+
+
+        //cameraShake = FindObjectOfType<CameraShake>();
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         DamageDealer damageDealer = collision.GetComponent<DamageDealer>();
@@ -15,6 +31,9 @@ public class Health : MonoBehaviour
             damageDealer.Die();
             TakeDamage(damageDealer.GetDamage());
             PlayHitEffect();
+            audioPlayer.PlayDamageClip();
+            PlayCamerShake();
+
         }
     }
 
@@ -22,11 +41,22 @@ public class Health : MonoBehaviour
     {
         health -= damageDealt;
 
+
         if (health <= 0)
         {
-            Destroy(gameObject);
+            Die();
         }
 
+    }
+
+    private void Die()
+    {
+        if (!isPlayer)
+        {
+            scoreKeeper.ModifyScore(score);
+
+        }
+        Destroy(gameObject);
     }
 
     void PlayHitEffect()
@@ -37,4 +67,20 @@ public class Health : MonoBehaviour
             Destroy(instance, instance.main.duration + instance.main.startLifetime.constantMax);
         }
     }
+
+    void PlayCamerShake()
+    {
+        if (cameraShake != null && isPlayShakeEffect)
+            cameraShake.PlayShake();
+
+
+
+    }
+
+    public int GetHealth()
+    {
+        return health;
+    }
+
+
 }

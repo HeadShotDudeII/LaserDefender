@@ -4,6 +4,7 @@ public class DamageDealer : MonoBehaviour
 {
     [SerializeField] int damageDealt = 10;
 
+
     public int GetDamage()
     {
         Debug.Log("damage is " + damageDealt);
