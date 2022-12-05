@@ -9,12 +9,14 @@ public class UIDisplay : MonoBehaviour
     [SerializeField] TextMeshProUGUI scoreText;
     //[SerializeField] GameObject playerGB;
     [SerializeField] Health playerHealth;
-    [SerializeField] ScoreKeeper scoreKeeper;
+    //[SerializeField] 
+    ScoreKeeper scoreKeeper;
     int startHealth;
 
 
     private void Start()
     {
+        scoreKeeper = FindObjectOfType<ScoreKeeper>();
         startHealth = playerHealth.GetHealth();
     }
 
@@ -29,7 +31,7 @@ public class UIDisplay : MonoBehaviour
     public void DisplayHealth()
     {
         healthBar.value = (float)playerHealth.GetHealth() / (float)startHealth;
-        Debug.Log("player health is " + startHealth);
+        //Debug.Log("player health is " + startHealth);
     }
 
     public void DisplayScore()

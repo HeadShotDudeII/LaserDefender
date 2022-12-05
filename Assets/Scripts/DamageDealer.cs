@@ -11,7 +11,7 @@ public class DamageDealer : MonoBehaviour
         return damageDealt;
     }
 
-    public void Die()
+    public void BulletDestroy()
     {
         Debug.Log(" Who is Die " + gameObject.name);
         if (gameObject.tag == "Bullets")

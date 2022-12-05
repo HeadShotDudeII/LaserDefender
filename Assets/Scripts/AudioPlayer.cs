@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class AudioPlayer : MonoBehaviour
@@ -9,6 +10,26 @@ public class AudioPlayer : MonoBehaviour
     [Header("DamageClip")]
     [SerializeField] AudioClip damageClip;
     [SerializeField] [Range(0f, 1f)] float damageVolume = 1f;
+    static AudioPlayer instance;
+
+    private void Awake()
+    {
+        ManagageAudioPlayer();
+    }
+
+    private void ManagageAudioPlayer()
+    {
+        if (instance != null)
+        {
+            gameObject.SetActive(false);
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+    }
 
     public void PlayShootingClip()
     {

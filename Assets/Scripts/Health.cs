@@ -10,9 +10,11 @@ public class Health : MonoBehaviour
     [SerializeField] CameraShake cameraShake;
     AudioPlayer audioPlayer;
     ScoreKeeper scoreKeeper;
+    LevelManager levelManager;
     // Start is called before the first frame update
     private void Awake()
     {
+        levelManager = FindObjectOfType<LevelManager>();
         audioPlayer = FindObjectOfType<AudioPlayer>();
         cameraShake = Camera.main.GetComponent<CameraShake>();
         scoreKeeper = FindObjectOfType<ScoreKeeper>();
@@ -28,7 +30,7 @@ public class Health : MonoBehaviour
         {
 
             Debug.Log(damageDealer.name);
-            damageDealer.Die();
+            damageDealer.BulletDestroy();
             TakeDamage(damageDealer.GetDamage());
             PlayHitEffect();
             audioPlayer.PlayDamageClip();
@@ -51,7 +53,12 @@ public class Health : MonoBehaviour
 
     private void Die()
     {
-        if (!isPlayer)
+        if (isPlayer)
+        {
+            levelManager.LoadGameOver();
+
+        }
+        else
         {
             scoreKeeper.ModifyScore(score);
 
